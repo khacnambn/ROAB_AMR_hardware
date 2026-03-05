@@ -1,22 +1,44 @@
-# ROAB_lab_MobileRobot
-I. Tổng quan
+# ROAB AMR Hardware
 
-1. Môi trường platform.ini (Khi nhấn Save file ini platformIO sẽ thực hiện build code)
-   File bao gồm: + Định nghĩa phần cứng và các cổng giao tiếp
-                 + lib_deps: các thư viện (có sẵn) cần cài
-                 + Những dependencies liên quan ..
-2. Các thư viện riêng sẽ lưu trong các file header trong Folder "lib"
-3. Định nghĩa các chân, các thông số constant dùng trong firmware sẽ được lưu trong Folder "config"
+This repository contains the hardware firmware for the ROAB Autonomous Mobile Robot (AMR), developed for integration with ROS2 and Micro-ROS on an ESP32-S3 microcontroller.
 
-II. Chạy firmware 
-Test
-1. Nap code lên ESP32S3 Chú ý thứ tự cắm chân sẽ là thứ tự cổng nạp và đọc data (Cổng gần đèn Leb cắm vào sau ACM1, cổng còn lại cắm vào trước ACM0)
-2. Chạy micro ROS trên terminal: 
-   Terminal 1: ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM1
-   Terminal 2: ros2 run teleop_twist_keyboard teleop_twist_keyboard  (điều khiển động cơ)
-   Terminal 3: ros2 topic list (kiểm tra các topic)
-    /cmd_vel
-    /imu/data
-    /odom/unfiltered
-    /parameter_events
-    /rosout
+## Overview
+
+1. **PlatformIO Configuration (platform.ini)**  
+   The `platform.ini` file defines the build environment. Saving this file triggers PlatformIO to build the code. It includes:  
+   - Hardware definitions and communication port configurations.  
+   - `lib_deps`: Required pre-installed libraries.  
+   - Related dependencies.
+
+2. **Custom Libraries**  
+   Custom libraries are stored as header files in the `lib` folder.
+
+3. **Configuration Constants**  
+   Pin definitions and constant parameters used in the firmware are stored in the `config` folder.
+
+## Running the Firmware
+
+### Testing Procedure
+
+1. **Upload Code to ESP32-S3**  
+   Note the connection order for the ports:  
+   - Connect the port farthest from the LED to `/dev/ttyACM0` first.  
+   - Connect the port nearest to the LED to `/dev/ttyACM1` second.  
+   This ensures proper upload and data reading.
+
+2. **Run Micro-ROS on Terminals**  
+   - **Terminal 1**: Start the Micro-ROS agent:
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM1
+
+- **Terminal 2**: Control the motors using keyboard teleoperation:
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+**Terminal 3**: List available ROS topics for verification:
+ros2 topic list
+
+Expected topics:
+/cmd_vel
+/imu/data
+/odom/unfiltered
+/parameter_events
+/rosout
