@@ -40,8 +40,13 @@ This repository contains the hardware firmware for the ROAB Autonomous Mobile Ro
    ros2 topic list
 
 Expected topics:
+
 /cmd_vel
+
 /imu/data
+
 /odom/unfiltered
+
 /parameter_events
+
 /rosout
