@@ -35,7 +35,7 @@ This repository contains the hardware firmware for the ROAB Autonomous Mobile Ro
   
    ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
-   **Terminal 3**: List available ROS topics for verification:
+   - **Terminal 3**: List available ROS topics for verification:
 
    ros2 topic list
 
