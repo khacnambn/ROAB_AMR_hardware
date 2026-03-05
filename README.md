@@ -2,6 +2,8 @@
 
 This repository contains the hardware firmware for the ROAB Autonomous Mobile Robot (AMR), developed for integration with ROS2 and Micro-ROS on an ESP32-S3 microcontroller.
 
+![Robot model](model.png) 
+
 ## Overview
 
 1. **PlatformIO Configuration (platform.ini)**  
