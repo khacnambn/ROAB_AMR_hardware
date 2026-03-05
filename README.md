@@ -30,19 +30,19 @@ This repository contains the hardware firmware for the ROAB Autonomous Mobile Ro
 
 2. **Run Micro-ROS on Terminals**  
    - **Terminal 1**: Start the Micro-ROS agent:
-     
+   '''  
    ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyACM1
-
+   '''
    - **Terminal 2**: Control the motors using keyboard teleoperation:
-  
+  '''
    ros2 run teleop_twist_keyboard teleop_twist_keyboard
-
+  '''
    - **Terminal 3**: List available ROS topics for verification:
-
+   '''
    ros2 topic list
-
+   '''
 Expected topics:
-
+'''
 /cmd_vel
 
 /imu/data
@@ -52,3 +52,4 @@ Expected topics:
 /parameter_events
 
 /rosout
+'''
